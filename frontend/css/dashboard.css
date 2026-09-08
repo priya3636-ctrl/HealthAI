@@ -1,0 +1,787 @@
+/* =====================================
+   GLOBAL
+===================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    background:#F4F8FD;
+
+    color:#222;
+
+}
+
+.container{
+
+    display:flex;
+
+    min-height:100vh;
+
+}
+
+/* =====================================
+   SIDEBAR
+===================================== */
+
+.sidebar{
+
+    width:270px;
+
+    background:linear-gradient(180deg,#2563EB,#1E40AF);
+
+    color:white;
+
+    padding:28px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    position:sticky;
+
+    top:0;
+
+    height:100vh;
+
+}
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    margin-bottom:45px;
+
+}
+
+.logo img{
+
+    width:55px;
+
+    height:55px;
+
+}
+
+.logo h2{
+
+    font-size:28px;
+
+    font-weight:700;
+
+}
+
+.sidebar ul{
+
+    list-style:none;
+
+}
+
+.sidebar ul li{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    padding:15px 18px;
+
+    margin-bottom:12px;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    font-size:16px;
+
+}
+
+.sidebar ul li i{
+
+    width:25px;
+
+    text-align:center;
+
+}
+
+.sidebar ul li:hover{
+
+    background:white;
+
+    color:#2563EB;
+
+    transform:translateX(6px);
+
+}
+
+.sidebar ul li.active{
+
+    background:white;
+
+    color:#2563EB;
+
+    font-weight:700;
+
+}
+
+/* =====================================
+   MAIN
+===================================== */
+
+.main{
+
+    flex:1;
+
+    padding:35px;
+
+}
+
+/* =====================================
+   TOPBAR
+===================================== */
+
+.topbar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:25px 35px;
+
+    box-shadow:0 12px 35px rgba(0,0,0,.08);
+
+    margin-bottom:30px;
+
+}
+
+.welcome h1{
+
+    font-size:34px;
+
+    color:#222;
+
+}
+
+.welcome span{
+
+    color:#2563EB;
+
+}
+
+.welcome p{
+
+    color:#64748B;
+
+    margin-top:8px;
+
+    font-size:16px;
+
+}
+
+.user-card{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    background:#F8FAFC;
+
+    padding:12px 20px;
+
+    border-radius:18px;
+
+}
+
+.user-card img{
+
+    width:60px;
+
+    height:60px;
+
+    border-radius:50%;
+
+    border:3px solid #2563EB;
+
+}
+
+.user-card h3{
+
+    color:#1E293B;
+
+}
+
+.user-card span{
+
+    color:#64748B;
+
+    font-size:14px;
+
+}
+
+/* =====================================
+   HERO BANNER
+===================================== */
+
+.hero-banner{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:45px;
+
+    margin-bottom:35px;
+
+    border-radius:25px;
+
+    background:linear-gradient(135deg,#2563EB,#06B6D4);
+
+    color:white;
+
+    overflow:hidden;
+
+}
+
+.hero-left{
+
+    width:65%;
+
+}
+
+.hero-left h2{
+
+    font-size:40px;
+
+    margin-bottom:20px;
+
+}
+
+.hero-left p{
+
+    font-size:18px;
+
+    line-height:34px;
+
+    opacity:.95;
+
+}
+
+.hero-left button{
+
+    margin-top:30px;
+
+    padding:16px 35px;
+
+    border:none;
+
+    border-radius:40px;
+
+    background:white;
+
+    color:#2563EB;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+}
+
+.hero-left button:hover{
+
+    transform:translateY(-4px);
+
+}
+
+.hero-right{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.hero-right i{
+
+    font-size:170px;
+
+    opacity:.18;
+
+}
+/* =====================================
+   DASHBOARD CARDS
+===================================== */
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:30px;
+
+    margin-bottom:35px;
+
+}
+
+.card{
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:30px;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+
+    transition:.35s;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:6px;
+
+    background:linear-gradient(90deg,#2563EB,#06B6D4);
+
+}
+
+.card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 20px 45px rgba(0,0,0,.15);
+
+}
+
+.card i{
+
+    width:70px;
+
+    height:70px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:30px;
+
+    border-radius:18px;
+
+    color:white;
+
+    margin-bottom:20px;
+
+    background:linear-gradient(135deg,#2563EB,#06B6D4);
+
+}
+
+.card h2{
+
+    font-size:38px;
+
+    color:#1E293B;
+
+    margin-bottom:8px;
+
+}
+
+.card p{
+
+    color:#64748B;
+
+    font-size:16px;
+
+}
+
+/* =====================================
+   CHARTS
+===================================== */
+
+.charts{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:30px;
+
+    margin-bottom:35px;
+
+}
+
+.chart-card{
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:30px;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+.chart-card:hover{
+
+    transform:translateY(-6px);
+
+}
+
+.chart-card h2{
+
+    color:#1E293B;
+
+    margin-bottom:20px;
+
+}
+
+.chart-card canvas{
+
+    width:100%!important;
+
+    height:320px!important;
+
+}
+/* =====================================
+   RECENT PREDICTIONS
+===================================== */
+
+.recent{
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:30px;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+.recent:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.recent h2{
+
+    color:#1E293B;
+
+    margin-bottom:25px;
+
+    font-size:26px;
+
+}
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    overflow:hidden;
+
+    border-radius:18px;
+
+}
+
+table thead{
+
+    background:linear-gradient(90deg,#2563EB,#06B6D4);
+
+}
+
+table th{
+
+    color:white;
+
+    padding:18px;
+
+    font-size:16px;
+
+    text-align:left;
+
+}
+
+table td{
+
+    padding:18px;
+
+    color:#475569;
+
+    border-bottom:1px solid #edf2f7;
+
+}
+
+table tbody tr{
+
+    transition:.3s;
+
+}
+
+table tbody tr:hover{
+
+    background:#F8FAFC;
+
+    transform:scale(1.01);
+
+}
+
+/* =====================================
+   CUSTOM SCROLLBAR
+===================================== */
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#2563EB;
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#E2E8F0;
+
+}
+
+/* =====================================
+   ANIMATIONS
+===================================== */
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.hero-banner{
+
+    animation:fadeIn .8s ease;
+
+}
+
+.card{
+
+    animation:fadeIn .8s ease;
+
+}
+
+.chart-card{
+
+    animation:fadeIn 1s ease;
+
+}
+
+.recent{
+
+    animation:fadeIn 1.2s ease;
+
+}
+
+/* =====================================
+   RESPONSIVE
+===================================== */
+
+@media(max-width:1200px){
+
+.cards{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.charts{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+@media(max-width:900px){
+
+.container{
+
+flex-direction:column;
+
+}
+
+.sidebar{
+
+width:100%;
+
+height:auto;
+
+position:relative;
+
+}
+
+.main{
+
+padding:20px;
+
+}
+
+.topbar{
+
+flex-direction:column;
+
+text-align:center;
+
+gap:20px;
+
+}
+
+.hero-banner{
+
+flex-direction:column;
+
+text-align:center;
+
+gap:30px;
+
+}
+
+.hero-left{
+
+width:100%;
+
+}
+
+.hero-right{
+
+display:none;
+
+}
+
+.cards{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+@media(max-width:600px){
+
+.topbar h1{
+
+font-size:26px;
+
+}
+
+.hero-left h2{
+
+font-size:28px;
+
+}
+
+.hero-left p{
+
+font-size:15px;
+
+line-height:28px;
+
+}
+
+.card{
+
+padding:25px;
+
+}
+
+.chart-card{
+
+padding:20px;
+
+}
+
+.recent{
+
+padding:20px;
+}
+
+table th,
+
+table td{
+
+padding:12px;
+
+font-size:14px;
+
+}
+
+}

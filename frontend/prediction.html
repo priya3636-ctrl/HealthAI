@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HealthAI | AI Disease Prediction</title>
+
+    <!-- Prediction Page CSS -->
+    <link rel="stylesheet" href="css/prediction.css">
+
+    <!-- Google Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     SIDEBAR
+========================================================= -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+
+        <i class="fa-solid fa-heart-pulse"></i>
+
+        <h2>HealthAI</h2>
+
+    </div>
+
+
+    <ul>
+
+        <li onclick="location.href='dashboard.html'">
+
+            <i class="fa-solid fa-house"></i>
+
+            <span>Dashboard</span>
+
+        </li>
+
+
+        <li class="active">
+
+            <i class="fa-solid fa-stethoscope"></i>
+
+            <span>Disease Prediction</span>
+
+        </li>
+
+
+        <li onclick="location.href='history.html'">
+
+            <i class="fa-solid fa-clock-rotate-left"></i>
+
+            <span>Prediction History</span>
+
+        </li>
+
+
+        <li onclick="location.href='chatbot.html'">
+
+            <i class="fa-solid fa-robot"></i>
+
+            <span>AI Chatbot</span>
+
+        </li>
+
+
+        <li onclick="location.href='hospital.html'">
+
+            <i class="fa-solid fa-hospital"></i>
+
+            <span>Nearby Hospitals</span>
+
+        </li>
+
+
+        <li onclick="location.href='reminder.html'">
+
+            <i class="fa-solid fa-pills"></i>
+
+            <span>Medicine Reminder</span>
+
+        </li>
+
+
+        <li onclick="location.href='profile.html'">
+
+            <i class="fa-solid fa-user"></i>
+
+            <span>Profile</span>
+
+        </li>
+
+
+        <li onclick="logout()">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            <span>Logout</span>
+
+        </li>
+
+    </ul>
+
+</aside>
+
+
+
+<!-- =========================================================
+     MAIN PAGE
+========================================================= -->
+
+<main class="page">
+
+
+    <!-- =====================================================
+         TOP HEADER
+    ====================================================== -->
+
+    <div class="topbar">
+
+        <div class="page-heading">
+
+            <h1>
+                🩺 AI Disease Prediction
+            </h1>
+
+            <p>
+                Professional AI Medical Assistant
+            </p>
+
+        </div>
+
+
+        <div class="top-user">
+
+            <!--
+                Avatar image removed because your console showed
+                avatar.png = 404.
+            -->
+
+            <div class="avatar-placeholder">
+
+                <i class="fa-solid fa-user"></i>
+
+            </div>
+
+
+            <div>
+
+                <h3 id="username">
+                    Welcome
+                </h3>
+
+                <span>
+                    HealthAI User
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         HERO BANNER
+    ====================================================== -->
+
+    <section class="hero-banner">
+
+
+        <div class="hero-left">
+
+            <h2>
+                Intelligent Disease Prediction
+            </h2>
+
+
+            <p>
+
+                Select your symptoms and let our Machine Learning
+                model analyze them to predict possible diseases,
+                confidence score, precautions, medicines,
+                and recommended specialists.
+
+            </p>
+
+        </div>
+
+
+        <div class="hero-right">
+
+            <i class="fa-solid fa-brain"></i>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =====================================================
+         MAIN PREDICTION AREA
+    ====================================================== -->
+
+    <div class="main-grid">
+
+
+        <!-- =================================================
+             LEFT: SYMPTOM SELECTION
+        ================================================== -->
+
+        <section class="prediction-panel">
+
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h2>
+                        Select Symptoms
+                    </h2>
+
+                    <p class="subtitle">
+
+                        Choose all symptoms you are experiencing.
+
+                    </p>
+
+                </div>
+
+
+                <div class="selected-count">
+
+                    Selected:
+                    <span id="selectedCount">0</span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Search -->
+
+            <div class="search-wrapper">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    id="searchSymptoms"
+                    class="search-box"
+                    placeholder="Search symptoms..."
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+
+            <!-- Symptoms -->
+
+            <div
+                id="symptomContainer"
+                class="symptom-grid"
+            >
+
+                <!-- Symptoms will be loaded here -->
+
+                <div class="symptom-loading">
+
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+
+                    <p>
+                        Loading symptoms...
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Predict -->
+
+            <button
+                type="button"
+                class="predict-btn"
+                id="predictBtn"
+            >
+
+                <i class="fa-solid fa-microchip"></i>
+
+                Predict Disease
+
+            </button>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             RIGHT: REPORT
+        ================================================== -->
+
+        <section class="report-panel">
+
+
+            <div class="welcome-card">
+
+
+                <div class="welcome-icon">
+
+                    <i class="fa-solid fa-heart-circle-plus"></i>
+
+                </div>
+
+
+                <h2>
+                    AI Diagnosis Report
+                </h2>
+
+
+                <p>
+
+                    Your disease prediction report,
+                    confidence score, medicines,
+                    precautions, specialist recommendation,
+                    and downloadable medical report
+                    will appear here.
+
+                </p>
+
+
+                <div class="report-info">
+
+                    <div>
+
+                        <i class="fa-solid fa-shield-heart"></i>
+
+                        <span>
+                            AI-assisted analysis
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <i class="fa-solid fa-chart-line"></i>
+
+                        <span>
+                            Confidence score
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <i class="fa-solid fa-file-medical"></i>
+
+                        <span>
+                            Downloadable report
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="page-footer">
+
+
+        <div class="footer-left">
+
+            <p>
+
+                © 2026 HealthAI |
+                AI Powered Disease Prediction System
+
+            </p>
+
+        </div>
+
+
+        <div class="footer-right">
+
+            <a href="#" title="GitHub">
+
+                <i class="fa-brands fa-github"></i>
+
+            </a>
+
+
+            <a href="#" title="LinkedIn">
+
+                <i class="fa-brands fa-linkedin"></i>
+
+            </a>
+
+
+            <a href="#" title="Email">
+
+                <i class="fa-solid fa-envelope"></i>
+
+            </a>
+
+        </div>
+
+
+    </footer>
+
+
+</main>
+
+
+
+<!-- =========================================================
+     LOGOUT
+     
+     We keep this here temporarily so the page does NOT
+     depend on the missing logout.js file.
+========================================================= -->
+
+<script>
+
+function logout() {
+
+    localStorage.removeItem("user");
+
+    localStorage.removeItem("token");
+
+    window.location.href = "login.html";
+
+}
+
+</script>
+
+
+
+<!-- =========================================================
+     PREDICTION JAVASCRIPT
+========================================================= -->
+
+<script src="js/prediction.js"></script>
+
+
+</body>
+
+</html>
+

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HealthAI | Prediction History</title>
+
+<link rel="stylesheet" href="css/history.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="history-page">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <i class="fa-solid fa-heart-pulse"></i>
+
+            <h2>HealthAI</h2>
+
+        </div>
+
+        <ul>
+
+            <li onclick="location.href='dashboard.html'">
+
+                <i class="fa-solid fa-house"></i>
+
+                Dashboard
+
+            </li>
+
+            <li onclick="location.href='prediction.html'">
+
+                <i class="fa-solid fa-stethoscope"></i>
+
+                Disease Prediction
+
+            </li>
+
+            <li class="active">
+
+                <i class="fa-solid fa-clock-rotate-left"></i>
+
+                Prediction History
+
+            </li>
+
+            <li onclick="location.href='chatbot.html'">
+
+                <i class="fa-solid fa-robot"></i>
+
+                AI Chatbot
+
+            </li>
+
+            <li onclick="location.href='hospital.html'">
+
+                <i class="fa-solid fa-hospital"></i>
+
+                Nearby Hospitals
+
+            </li>
+
+            <li onclick="location.href='reminder.html'">
+
+                <i class="fa-solid fa-pills"></i>
+
+                Medicine Reminder
+
+            </li>
+
+            <li onclick="location.href='profile.html'">
+
+                <i class="fa-solid fa-user"></i>
+
+                Profile
+
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <!-- Main -->
+
+    <main class="main-content">
+
+        <!-- Header -->
+
+        <div class="topbar">
+
+            <div>
+
+                <h1>📜 Prediction History</h1>
+
+                <p>
+
+                    View all your previous AI disease predictions.
+
+                </p>
+
+            </div>
+
+            <button class="dashboard-btn"
+
+            onclick="location.href='dashboard.html'">
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+                Dashboard
+
+            </button>
+
+        </div>
+
+        <!-- Search -->
+
+        <div class="search-box">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="text"
+                id="searchPrediction"
+                placeholder="Search disease...">
+
+        </div>
+
+        <!-- Statistics -->
+
+        <div class="history-stats">
+
+            <div class="stat-card">
+
+                <i class="fa-solid fa-notes-medical"></i>
+
+                <div>
+
+                    <h3 id="totalPredictions">0</h3>
+
+                    <p>Total Predictions</p>
+
+                </div>
+
+            </div>
+
+            <div class="stat-card">
+
+                <i class="fa-solid fa-file-pdf"></i>
+
+                <div>
+
+                    <h3 id="downloadedReports">0</h3>
+
+                    <p>Reports Downloaded</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- History Cards -->
+
+        <div id="historyContainer"
+
+        class="history-grid">
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="js/history.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HealthAI Dashboard</title>
+
+<link rel="stylesheet" href="css/dashboard.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <!-- Correct path to logo -->
+            <img src="js/images/logo.png" alt="HealthAI logo">
+
+            <h2>HealthAI</h2>
+
+        </div>
+
+        <ul>
+
+            <li class="active">
+                <i class="fa-solid fa-house"></i>
+                Dashboard
+            </li>
+
+            <li onclick="location.href='prediction.html'">
+                <i class="fa-solid fa-stethoscope"></i>
+                Disease Prediction
+            </li>
+
+            <li onclick="location.href='history.html'">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                Prediction History
+            </li>
+
+            <li onclick="location.href='chatbot.html'">
+                <i class="fa-solid fa-robot"></i>
+                AI Chatbot
+            </li>
+
+            <li onclick="location.href='hospital.html'">
+                <i class="fa-solid fa-hospital"></i>
+                Nearby Hospitals
+            </li>
+
+            <li onclick="location.href='reminder.html'">
+                <i class="fa-solid fa-pills"></i>
+                Medicine Reminder
+            </li>
+
+            <li onclick="location.href='profile.html'">
+                <i class="fa-solid fa-user"></i>
+                Profile
+            </li>
+
+            <li onclick="logout()">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <!-- Main -->
+
+    <main class="main">
+
+        <!-- Premium Topbar -->
+
+        <div class="topbar">
+
+            <div class="welcome">
+
+                <h1>
+
+                    👋 Welcome,
+
+                    <span id="username">User</span>
+
+                </h1>
+
+                <p>
+
+                    Professional AI Medical Assistant
+
+                </p>
+
+            </div>
+
+            <div class="user-card">
+
+                <!-- Correct path to avatar -->
+                <img src="js/images/avatar.png" alt="HealthAI user avatar">
+
+                <div>
+
+                    <h3>HealthAI User</h3>
+
+                    <span>AI Healthcare Platform</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Hero Banner -->
+
+        <section class="hero-banner">
+
+            <div class="hero-left">
+
+                <h2>
+
+                    AI Powered Healthcare Dashboard
+
+                </h2>
+
+                <p>
+
+                    Predict diseases using Artificial Intelligence,
+
+                    monitor patient history,
+
+                    manage medicines,
+
+                    and interact with your AI Medical Assistant.
+
+                </p>
+
+                <button onclick="location.href='prediction.html'">
+
+                    Start Prediction
+
+                </button>
+
+            </div>
+
+            <div class="hero-right">
+
+                <i class="fa-solid fa-heart-pulse"></i>
+
+            </div>
+
+        </section>
+
+        <!-- Statistics -->
+
+        <div class="cards">
+
+            <div class="card">
+
+                <i class="fa-solid fa-chart-column"></i>
+
+                <h2 id="totalPredictions">0</h2>
+
+                <p>Total Predictions</p>
+
+            </div>
+
+            <div class="card">
+
+                <i class="fa-solid fa-virus"></i>
+
+                <h2 id="topDisease">-</h2>
+
+                <p>Most Predicted Disease</p>
+
+            </div>
+
+            <div class="card">
+
+                <i class="fa-solid fa-calendar"></i>
+
+                <h2 id="lastPrediction">-</h2>
+
+                <p>Last Prediction</p>
+
+            </div>
+
+        </div>
+
+        <!-- Charts -->
+
+        <div class="charts">
+
+            <div class="chart-card">
+
+                <h2>📊 Disease Statistics</h2>
+
+                <canvas id="barChart"></canvas>
+
+            </div>
+
+            <div class="chart-card">
+
+                <h2>🥧 Disease Distribution</h2>
+
+                <canvas id="pieChart"></canvas>
+
+            </div>
+
+        </div>
+
+        <!-- Recent -->
+
+        <div class="recent">
+
+            <h2>Recent Predictions</h2>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Date</th>
+
+                        <th>Disease</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="recentPredictions">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="js/dashboard.js"></script>
+
+<script>
+
+function logout(){
+
+    localStorage.removeItem("user");
+
+    window.location.href="login.html";
+
+}
+
+</script>
+
+</body>
+
+</html>
+```

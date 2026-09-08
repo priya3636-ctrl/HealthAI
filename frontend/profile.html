@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HealthAI | My Profile</title>
+
+    <link rel="stylesheet" href="css/profile.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="profile-page">
+
+    <!-- Top Header -->
+
+    <header class="profile-header">
+
+        <div>
+
+            <h1>
+                👤 My Profile
+            </h1>
+
+            <p>
+                Manage your HealthAI account information
+            </p>
+
+        </div>
+
+        <button class="dashboard-btn"
+        onclick="location.href='dashboard.html'">
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Dashboard
+
+        </button>
+
+    </header>
+
+    <!-- Profile Card -->
+
+    <div class="profile-card">
+
+        <div class="profile-top">
+
+            <div class="avatar">
+
+                <i class="fa-solid fa-user"></i>
+
+            </div>
+
+            <h2 id="profileName">
+
+                HealthAI User
+
+            </h2>
+
+            <p id="profileEmail">
+
+                user@email.com
+
+            </p>
+
+        </div>
+
+        <!-- Statistics -->
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+
+                <i class="fa-solid fa-stethoscope"></i>
+
+                <h3 id="predictionCount">0</h3>
+
+                <span>Predictions</span>
+
+            </div>
+
+            <div class="stat-card">
+
+                <i class="fa-solid fa-file-pdf"></i>
+
+                <h3 id="reportCount">0</h3>
+
+                <span>Reports</span>
+
+            </div>
+
+            <div class="stat-card">
+
+                <i class="fa-solid fa-heart-pulse"></i>
+
+                <h3>92%</h3>
+
+                <span>Health Score</span>
+
+            </div>
+
+        </div>
+
+        <!-- Profile Details -->
+
+        <div class="profile-form">
+
+            <div class="form-group">
+
+                <label>
+
+                    <i class="fa-solid fa-user"></i>
+
+                    Full Name
+
+                </label>
+
+                <input
+                type="text"
+                id="name">
+
+            </div>
+
+            <div class="form-group">
+
+                <label>
+
+                    <i class="fa-solid fa-envelope"></i>
+
+                    Email
+
+                </label>
+
+                <input
+                type="email"
+                id="email"
+                readonly>
+
+            </div>
+
+            <div class="two-column">
+
+                <div class="form-group">
+
+                    <label>
+
+                        <i class="fa-solid fa-cake-candles"></i>
+
+                        Age
+
+                    </label>
+
+                    <input
+                    type="number"
+                    id="age">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>
+
+                        <i class="fa-solid fa-venus-mars"></i>
+
+                        Gender
+
+                    </label>
+
+                    <select id="gender">
+
+                        <option value="Male">
+
+                            Male
+
+                        </option>
+
+                        <option value="Female">
+
+                            Female
+
+                        </option>
+
+                        <option value="Other">
+
+                            Other
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Buttons -->
+
+        <div class="button-group">
+
+            <button id="updateBtn"
+            class="save-btn">
+
+                <i class="fa-solid fa-floppy-disk"></i>
+
+                Save Changes
+
+            </button>
+
+            <button id="logoutBtn"
+            class="logout-btn">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="js/profile.js"></script>
+
+</body>
+
+</html>

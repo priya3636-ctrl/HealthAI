@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Medicine Reminder | HealthAI</title>
+
+    <link rel="stylesheet" href="css/reminder.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+
+        <h1>💊 Medicine Reminder</h1>
+
+        <p>
+            Never miss your medicines again.
+        </p>
+
+    </div>
+
+    <div class="reminder-form">
+
+        <input
+            type="text"
+            id="medicineName"
+            placeholder="Medicine Name">
+
+        <input
+            type="time"
+            id="medicineTime">
+
+        <input
+            type="date"
+            id="startDate">
+
+        <input
+            type="date"
+            id="endDate">
+
+        <button id="saveReminder">
+
+            <i class="fa-solid fa-plus"></i>
+
+            Save Reminder
+
+        </button>
+
+    </div>
+
+    <h2 class="title">
+
+        Your Medicines
+
+    </h2>
+
+    <div id="reminderList" class="reminder-list">
+
+    </div>
+
+</div>
+
+<script src="js/reminder.js"></script>
+
+</body>
+
+</html>

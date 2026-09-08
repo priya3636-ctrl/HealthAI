@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>HealthAI | AI Assistant</title>
+
+    <link
+        rel="stylesheet"
+        href="css/chatbot.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+</head>
+
+<body>
+
+    <!-- Background decoration -->
+
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+
+
+    <!-- Main Application -->
+
+    <main class="ai-app">
+
+
+        <!-- =========================
+             Header
+        ========================== -->
+
+        <header class="ai-header">
+
+            <div class="brand">
+
+                <div class="ai-logo">
+
+                    <i class="fa-solid fa-heart-pulse"></i>
+
+                    <span class="pulse-ring"></span>
+
+                </div>
+
+                <div class="brand-text">
+
+                    <h1>HealthAI</h1>
+
+                    <span>AI Health Assistant</span>
+
+                </div>
+
+            </div>
+
+
+            <div class="header-actions">
+
+                <div class="ai-status">
+
+                    <span class="status-dot"></span>
+
+                    <span>AI Online</span>
+
+                </div>
+
+                <button
+                    class="header-btn"
+                    title="More options"
+                >
+
+                    <i class="fa-solid fa-ellipsis"></i>
+
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- =========================
+             Chat Area
+        ========================== -->
+
+        <section
+            class="chat-box"
+            id="chatBox"
+        >
+
+
+            <!-- Welcome Screen -->
+
+            <div class="welcome-screen">
+
+                <div class="welcome-icon">
+
+                    <div class="welcome-icon-inner">
+
+                        <i class="fa-solid fa-sparkles"></i>
+
+                    </div>
+
+                </div>
+
+
+                <h2>
+
+                    How can I help you today?
+
+                </h2>
+
+
+                <p>
+
+                    Ask HealthAI about symptoms, diseases,
+                    medicines, healthy habits or first aid.
+
+                </p>
+
+
+                <!-- Quick Suggestions -->
+
+                <div class="suggestions">
+
+                    <button
+                        class="suggestion"
+                        onclick="document.getElementById('messageInput').value='What are the common symptoms of fever?'; document.getElementById('sendBtn').click();"
+                    >
+
+                        <i class="fa-solid fa-temperature-half"></i>
+
+                        <span>Common fever symptoms</span>
+
+                    </button>
+
+
+                    <button
+                        class="suggestion"
+                        onclick="document.getElementById('messageInput').value='Give me some healthy lifestyle tips'; document.getElementById('sendBtn').click();"
+                    >
+
+                        <i class="fa-solid fa-heart-pulse"></i>
+
+                        <span>Healthy lifestyle</span>
+
+                    </button>
+
+
+                    <button
+                        class="suggestion"
+                        onclick="document.getElementById('messageInput').value='What should I know about medicines?'; document.getElementById('sendBtn').click();"
+                    >
+
+                        <i class="fa-solid fa-pills"></i>
+
+                        <span>Medicine information</span>
+
+                    </button>
+
+
+                    <button
+                        class="suggestion"
+                        onclick="document.getElementById('messageInput').value='What should I do for basic first aid?'; document.getElementById('sendBtn').click();"
+                    >
+
+                        <i class="fa-solid fa-kit-medical"></i>
+
+                        <span>First aid</span>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Initial Bot Message -->
+
+            <div class="message bot-message">
+
+                <div class="avatar bot-avatar">
+
+                    <i class="fa-solid fa-heart-pulse"></i>
+
+                </div>
+
+                <div class="message-content bot-content">
+
+                    <div class="message-name">
+
+                        HealthAI Assistant
+
+                    </div>
+
+                    <p>
+
+                        Hello 👋 I'm your HealthAI Assistant.
+                        Tell me what you're experiencing or
+                        ask me a health-related question.
+
+                    </p>
+
+                    <span class="time">
+
+                        Now
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =========================
+             Typing Indicator
+        ========================== -->
+
+        <div
+            class="typing"
+            id="typing"
+            style="display:none;"
+        >
+
+            <div class="typing-avatar">
+
+                <i class="fa-solid fa-heart-pulse"></i>
+
+            </div>
+
+            <div class="typing-content">
+
+                <span>HealthAI is thinking</span>
+
+                <div class="typing-dots">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             Input Area
+        ========================== -->
+
+        <footer class="input-section">
+
+            <div class="input-wrapper">
+
+                <div class="input-icon">
+
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                </div>
+
+
+                <input
+                    type="text"
+                    id="messageInput"
+                    placeholder="Ask HealthAI anything..."
+                    autocomplete="off"
+                >
+
+
+                <button
+                    id="sendBtn"
+                    class="send-btn"
+                    title="Send message"
+                >
+
+                    <i class="fa-solid fa-arrow-up"></i>
+
+                </button>
+
+            </div>
+
+
+            <div class="input-footer">
+
+                <span>
+
+                    <i class="fa-solid fa-shield-heart"></i>
+
+                    Health information assistant
+
+                </span>
+
+                <span>
+
+                    Press Enter to send
+
+                </span>
+
+            </div>
+
+        </footer>
+
+
+    </main>
+
+
+    <script src="js/chatbot.js"></script>
+
+</body>
+
+</html>

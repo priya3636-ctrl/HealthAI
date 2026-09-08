@@ -1,0 +1,751 @@
+/* ===========================================
+   HealthAI Premium Register UI
+   Part 1
+=========================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+
+    min-height:100vh;
+
+    overflow:hidden;
+
+    background:linear-gradient(
+        135deg,
+        #2563EB,
+        #06B6D4
+    );
+
+}
+
+/* Background */
+
+.background{
+
+    position:fixed;
+
+    width:100%;
+
+    height:100%;
+
+    overflow:hidden;
+
+}
+
+.circle{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.12);
+
+    animation:float 10s infinite linear;
+
+}
+
+.circle1{
+
+    width:350px;
+
+    height:350px;
+
+    left:-120px;
+
+    top:-120px;
+
+}
+
+.circle2{
+
+    width:450px;
+
+    height:450px;
+
+    right:-180px;
+
+    bottom:-180px;
+
+}
+
+@keyframes float{
+
+    0%{
+
+        transform:translateY(0px);
+
+    }
+
+    50%{
+
+        transform:translateY(-30px);
+
+    }
+
+    100%{
+
+        transform:translateY(0px);
+
+    }
+
+}
+
+/* Layout */
+
+.register-container{
+
+    position:relative;
+
+    z-index:5;
+
+    width:100%;
+
+    height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:60px;
+
+    padding:40px;
+
+}
+
+/* Left Panel */
+
+.left-panel{
+
+    width:500px;
+
+    color:white;
+
+}
+
+.logo-icon{
+
+    font-size:70px;
+
+    margin-bottom:25px;
+
+}
+
+.left-panel h1{
+
+    font-size:55px;
+
+    margin-bottom:10px;
+
+}
+
+.left-panel h2{
+
+    font-size:28px;
+
+    margin-bottom:25px;
+
+    font-weight:500;
+
+}
+
+.left-panel p{
+
+    line-height:34px;
+
+    font-size:18px;
+
+    color:#E2E8F0;
+
+}
+/* ===========================================
+   Part 2
+   Register Card + Inputs
+=========================================== */
+
+.register-box{
+
+    width:450px;
+
+    max-height:90vh;
+
+    overflow-y:auto;
+
+    padding:40px;
+
+    border-radius:28px;
+
+    background:rgba(255,255,255,.18);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.25);
+
+    box-shadow:0 20px 50px rgba(0,0,0,.20);
+
+    animation:slideUp .8s ease;
+
+}
+
+@keyframes slideUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.register-box h2{
+
+    text-align:center;
+
+    color:white;
+
+    font-size:34px;
+
+    margin-bottom:10px;
+
+}
+
+.register-box p{
+
+    text-align:center;
+
+    color:#E2E8F0;
+
+    margin-bottom:30px;
+
+}
+
+/* Input Group */
+
+.input-group{
+
+    position:relative;
+
+    margin-bottom:18px;
+
+}
+
+.input-group input,
+.input-group select{
+
+    width:100%;
+
+    padding:16px 50px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:14px;
+
+    background:rgba(255,255,255,.95);
+
+    font-size:16px;
+
+    transition:.3s;
+
+}
+
+.input-group input:focus,
+.input-group select:focus{
+
+    transform:scale(1.02);
+
+    box-shadow:0 8px 20px rgba(37,99,235,.25);
+
+}
+
+.input-group i:first-child{
+
+    position:absolute;
+
+    left:18px;
+
+    top:18px;
+
+    color:#2563EB;
+
+    font-size:18px;
+
+}
+
+/* Eye Button */
+
+.toggle-password{
+
+    position:absolute;
+
+    right:18px;
+
+    top:18px;
+
+    color:#64748B;
+
+    cursor:pointer;
+
+}
+
+.toggle-password:hover{
+
+    color:#2563EB;
+
+}
+
+/* Password Strength */
+
+.strength{
+
+    width:100%;
+
+    height:8px;
+
+    background:rgba(255,255,255,.25);
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    margin-bottom:18px;
+
+}
+
+#strengthBar{
+
+    width:0%;
+
+    height:100%;
+
+    background:#22C55E;
+
+    transition:.4s;
+
+}
+
+/* Register Button */
+
+.register-box button{
+
+    width:100%;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:linear-gradient(
+        135deg,
+        #2563EB,
+        #06B6D4
+    );
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    box-shadow:0 12px 25px rgba(37,99,235,.35);
+
+}
+
+.register-box button:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 18px 35px rgba(37,99,235,.45);
+
+}
+
+.register-box button i{
+
+    margin-right:10px;
+
+}
+/* ===========================================
+   Part 3
+   Divider + Login Link + Animations
+=========================================== */
+
+/* Register Link */
+
+.register-link{
+
+    text-align:center;
+
+    margin-top:22px;
+
+    color:#E2E8F0;
+
+    font-size:16px;
+
+}
+
+.register-link a{
+
+    color:white;
+
+    font-weight:700;
+
+    text-decoration:none;
+
+    transition:.3s;
+
+}
+
+.register-link a:hover{
+
+    color:#FFD54F;
+
+    text-decoration:underline;
+
+}
+
+/* Placeholder */
+
+.input-group input::placeholder{
+
+    color:#64748B;
+
+}
+
+.input-group select{
+
+    color:#64748B;
+
+}
+
+.input-group select option{
+
+    color:#222;
+
+}
+
+/* Card Hover */
+
+.register-box:hover{
+
+    transform:translateY(-6px);
+
+    transition:.35s;
+
+    box-shadow:0 30px 60px rgba(0,0,0,.28);
+
+}
+
+/* Left Panel Animation */
+
+.left-panel{
+
+    animation:fadeLeft 1s ease;
+
+}
+
+@keyframes fadeLeft{
+
+    from{
+
+        opacity:0;
+
+        transform:translateX(-50px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateX(0);
+
+    }
+
+}
+
+/* Logo Animation */
+
+.logo-icon{
+
+    animation:pulseHeart 2.5s infinite;
+
+}
+
+@keyframes pulseHeart{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.12);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+/* Input Hover */
+
+.input-group:hover input,
+.input-group:hover select{
+
+    box-shadow:0 10px 25px rgba(37,99,235,.18);
+
+}
+/* ===========================================
+   Part 4
+   Responsive + Final Premium Polish
+=========================================== */
+
+/* Smooth Transition */
+
+*{
+
+    transition:.3s ease;
+
+}
+
+/* Selection */
+
+::selection{
+
+    background:#2563EB;
+
+    color:white;
+
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#2563EB;
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#E5E7EB;
+
+}
+
+/* Button Shine Effect */
+
+.register-box button{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.register-box button::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-100%;
+
+    width:100%;
+
+    height:100%;
+
+    background:rgba(255,255,255,.25);
+
+    transform:skewX(-30deg);
+
+}
+
+.register-box button:hover::before{
+
+    left:120%;
+
+    transition:.8s;
+
+}
+
+/* Button Click */
+
+.register-box button:active{
+
+    transform:scale(.98);
+
+}
+
+/* Responsive */
+
+@media(max-width:1100px){
+
+.register-container{
+
+    flex-direction:column;
+
+    gap:40px;
+
+    padding:30px;
+
+}
+
+.left-panel{
+
+    width:100%;
+
+    text-align:center;
+
+}
+
+.left-panel h1{
+
+    font-size:46px;
+
+}
+
+.left-panel h2{
+
+    font-size:24px;
+
+}
+
+.left-panel p{
+
+    max-width:700px;
+
+    margin:auto;
+
+}
+
+.register-box{
+
+    width:100%;
+
+    max-width:470px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.left-panel{
+
+    display:none;
+
+}
+
+.register-container{
+
+    padding:20px;
+
+}
+
+.register-box{
+
+    width:100%;
+
+    padding:35px 25px;
+
+}
+
+.register-box h2{
+
+    font-size:30px;
+
+}
+
+.register-box p{
+
+    font-size:15px;
+
+}
+
+.input-group input,
+.input-group select{
+
+    padding:15px 48px;
+
+}
+
+.register-box button{
+
+    padding:15px;
+
+}
+
+}
+
+@media(max-width:480px){
+
+.register-box{
+
+    padding:30px 20px;
+
+}
+
+.register-box h2{
+
+    font-size:26px;
+
+}
+
+.register-box p{
+
+    font-size:14px;
+
+}
+
+.register-link{
+
+    font-size:14px;
+
+}
+
+.register-box button{
+
+    font-size:16px;
+
+}
+
+}

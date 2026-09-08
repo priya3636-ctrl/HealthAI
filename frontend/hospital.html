@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nearby Hospitals | HealthAI</title>
+
+    <link rel="stylesheet" href="css/hospital.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+
+        <div class="brand">
+            <div class="brand-icon">♥</div>
+
+            <div>
+                <h2>HealthAI</h2>
+                <span>Healthcare Assistant</span>
+            </div>
+        </div>
+
+        <a href="dashboard.html" class="dashboard-link">
+            ← Dashboard
+        </a>
+
+    </header>
+
+
+    <main class="page">
+
+        <!-- HERO -->
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <span class="small-label">
+                    LOCATION SERVICES
+                </span>
+
+                <h1>
+                    Find hospitals
+                    <span>near you.</span>
+                </h1>
+
+                <p>
+                    Find nearby hospitals using your current location
+                    and get directions instantly.
+                </p>
+
+                <div class="button-row">
+
+                    <button id="findBtn" class="primary-btn">
+                        <span>📍</span>
+                        Use My Current Location
+                    </button>
+
+                    <button id="nuzvidBtn" class="secondary-btn">
+                        Search Nuzvid
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- LOCATION STATUS -->
+        <section id="locationBox" class="location-box">
+
+            <div class="status-icon">
+                📍
+            </div>
+
+            <div>
+
+                <h3 id="locationTitle">
+                    Location not detected
+                </h3>
+
+                <p id="locationText">
+                    Click "Use My Current Location" to find hospitals around you.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- SEARCH -->
+        <section class="search-section">
+
+            <h2>Search a location manually</h2>
+
+            <p>
+                If your browser cannot detect your exact GPS location,
+                enter your city or area.
+            </p>
+
+            <div class="search-row">
+
+                <input
+                    type="text"
+                    id="locationInput"
+                    placeholder="Example: Nuzvid, Andhra Pradesh"
+                    autocomplete="off"
+                >
+
+                <button id="searchBtn">
+                    Search Hospitals
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- LOADING -->
+        <div id="loading" class="loading">
+
+            <div class="spinner"></div>
+
+            <div>
+                <strong>Finding nearby hospitals...</strong>
+                <span>Please wait a moment.</span>
+            </div>
+
+        </div>
+
+
+        <!-- ERROR -->
+        <div id="errorBox" class="error-box"></div>
+
+
+        <!-- RESULTS HEADER -->
+        <section id="resultsHeader" class="results-header">
+
+            <div>
+                <h2>Nearby hospitals</h2>
+                <p id="resultsLocation"></p>
+            </div>
+
+            <span id="hospitalCount"></span>
+
+        </section>
+
+
+        <!-- HOSPITAL LIST -->
+        <section id="hospitalList" class="hospital-list"></section>
+
+
+        <!-- EMPTY STATE -->
+        <section id="emptyState" class="empty-state">
+
+            <div class="empty-icon">
+                🏥
+            </div>
+
+            <h2>No hospitals found</h2>
+
+            <p>
+                Try increasing the search area or searching for another location.
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div>
+            ♥ HealthAI
+        </div>
+
+        <span>
+            AI-powered healthcare assistance
+        </span>
+
+    </footer>
+
+
+    <script src="js/hospital.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,203 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#eef5ff;
+}
+
+.container{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+    padding:40px 0;
+}
+
+.header{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.header h1{
+    font-size:38px;
+    color:#2563eb;
+    margin-bottom:10px;
+}
+
+.header p{
+    color:#666;
+    font-size:17px;
+}
+
+.reminder-form{
+
+    background:white;
+    padding:30px;
+    border-radius:18px;
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+
+}
+
+.reminder-form input{
+
+    padding:14px;
+    border:1px solid #d1d5db;
+    border-radius:10px;
+    font-size:16px;
+    outline:none;
+
+}
+
+.reminder-form input:focus{
+
+    border-color:#2563eb;
+
+}
+
+.reminder-form button{
+
+    grid-column:1/3;
+
+    padding:15px;
+
+    background:#2563eb;
+    color:white;
+
+    border:none;
+
+    border-radius:12px;
+
+    font-size:17px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.reminder-form button:hover{
+
+    background:#1d4ed8;
+    transform:translateY(-3px);
+
+}
+
+.title{
+
+    margin:40px 0 20px;
+    color:#2563eb;
+
+}
+
+.reminder-list{
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:20px;
+
+}
+
+.reminder-card{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+.reminder-card:hover{
+
+    transform:translateY(-6px);
+
+}
+
+.reminder-card h2{
+
+    color:#2563eb;
+    margin-bottom:15px;
+
+}
+
+.reminder-card p{
+
+    margin:10px 0;
+    color:#555;
+
+}
+
+.delete-btn{
+
+    margin-top:15px;
+
+    width:100%;
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#ef4444;
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.delete-btn:hover{
+
+    background:#dc2626;
+
+}
+
+.no-reminder{
+
+    background:white;
+
+    padding:40px;
+
+    border-radius:15px;
+
+    text-align:center;
+
+    color:#777;
+
+}
+
+@media(max-width:768px){
+
+.reminder-form{
+
+grid-template-columns:1fr;
+
+}
+
+.reminder-form button{
+
+grid-column:1;
+
+}
+
+.header h1{
+
+font-size:30px;
+
+}
+
+}

@@ -1,0 +1,1046 @@
+/* =========================================================
+   HEALTHAI - PREDICTION PAGE
+   Clean working version
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+    font-family: "Poppins", sans-serif;
+    background: #f5f8fc;
+    color: #1f2937;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 230px;
+    height: 100vh;
+
+    background: linear-gradient(
+        180deg,
+        #1687e8 0%,
+        #1269c7 100%
+    );
+
+    color: white;
+
+    padding: 24px 15px;
+
+    z-index: 1000;
+
+    overflow-y: auto;
+}
+
+
+/* Logo */
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 5px 12px 30px;
+}
+
+.logo i {
+    font-size: 28px;
+}
+
+.logo h2 {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+
+/* Sidebar list */
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar li {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 14px 15px;
+
+    margin-bottom: 7px;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    transition: 0.2s ease;
+}
+
+.sidebar li i {
+    width: 20px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.sidebar li:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.sidebar li.active {
+    background: white;
+    color: #126dcc;
+}
+
+
+/* =========================================================
+   MAIN PAGE
+========================================================= */
+
+.page {
+    display: block !important;
+
+    position: relative;
+
+    margin-left: 230px;
+
+    width: calc(100% - 230px);
+
+    min-height: 100vh;
+
+    padding: 30px;
+
+    background: #f5f8fc;
+
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.topbar {
+    width: 100%;
+
+    min-height: 80px;
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    background: white;
+
+    padding: 18px 25px;
+
+    border-radius: 16px;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+
+    margin-bottom: 25px;
+}
+
+.page-heading h1 {
+    font-size: 25px;
+    color: #172033;
+
+    margin-bottom: 4px;
+}
+
+.page-heading p {
+    font-size: 13px;
+    color: #718096;
+}
+
+
+/* User */
+
+.top-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar-placeholder {
+    width: 45px;
+    height: 45px;
+
+    border-radius: 50%;
+
+    background: #e7f2ff;
+
+    color: #1477d4;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 20px;
+}
+
+.top-user h3 {
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+
+.top-user span {
+    font-size: 11px;
+    color: #718096;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero-banner {
+    width: 100%;
+
+    min-height: 170px;
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 30px 35px;
+
+    border-radius: 18px;
+
+    background: linear-gradient(
+        135deg,
+        #0b8edb,
+        #159dcc
+    );
+
+    color: white;
+
+    margin-bottom: 25px;
+
+    overflow: hidden;
+}
+
+.hero-left {
+    max-width: 800px;
+}
+
+.hero-left h2 {
+    font-size: 27px;
+    margin-bottom: 10px;
+}
+
+.hero-left p {
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.hero-right {
+    font-size: 75px;
+
+    opacity: 0.25;
+
+    padding-right: 30px;
+}
+
+
+/* =========================================================
+   MAIN GRID
+========================================================= */
+
+.main-grid {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: minmax(400px, 1fr)
+                           minmax(400px, 1fr);
+
+    gap: 25px;
+
+    align-items: start;
+}
+
+
+/* =========================================================
+   PREDICTION PANEL
+========================================================= */
+
+.prediction-panel {
+    background: white;
+
+    border-radius: 18px;
+
+    padding: 25px;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+
+    min-height: 450px;
+}
+
+.panel-header {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    margin-bottom: 20px;
+}
+
+.prediction-panel h2 {
+    font-size: 20px;
+
+    color: #172033;
+}
+
+.subtitle {
+    font-size: 13px;
+
+    color: #718096;
+
+    margin-top: 5px;
+}
+
+.selected-count {
+    background: #edf6ff;
+
+    color: #1477d4;
+
+    padding: 8px 12px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.search-wrapper {
+    position: relative;
+
+    width: 100%;
+
+    margin-bottom: 20px;
+}
+
+.search-wrapper i {
+    position: absolute;
+
+    left: 15px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #8a96a8;
+}
+
+.search-box {
+    width: 100%;
+
+    height: 45px;
+
+    border: 1px solid #dce3ec;
+
+    border-radius: 10px;
+
+    padding: 0 15px 0 43px;
+
+    outline: none;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    background: white;
+}
+
+.search-box:focus {
+    border-color: #1588df;
+
+    box-shadow: 0 0 0 3px rgba(21, 136, 223, 0.1);
+}
+
+
+/* =========================================================
+   SYMPTOMS
+========================================================= */
+
+.symptom-grid {
+    width: 100%;
+
+    min-height: 230px;
+
+    max-height: 360px;
+
+    overflow-y: auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 10px;
+
+    padding: 5px;
+
+    margin-bottom: 20px;
+}
+
+
+/* Symptom item */
+
+.symptom-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 10px;
+
+    border: 1px solid #e1e8f0;
+
+    border-radius: 9px;
+
+    background: #fafcff;
+
+    cursor: pointer;
+
+    font-size: 12px;
+
+    transition: 0.2s;
+}
+
+.symptom-item:hover {
+    border-color: #1687e8;
+
+    background: #f0f8ff;
+}
+
+.symptom-item input {
+    accent-color: #1687e8;
+
+    cursor: pointer;
+}
+
+.symptom-item label {
+    cursor: pointer;
+}
+
+
+/* Loading */
+
+.symptom-loading {
+    grid-column: 1 / -1;
+
+    min-height: 200px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    color: #718096;
+
+    gap: 10px;
+}
+
+.symptom-loading i {
+    font-size: 25px;
+
+    color: #1687e8;
+}
+
+
+/* =========================================================
+   PREDICT BUTTON
+========================================================= */
+
+.predict-btn {
+    width: 100%;
+
+    height: 50px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    background: linear-gradient(
+        135deg,
+        #1687e8,
+        #126dcc
+    );
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.predict-btn:hover {
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 6px 15px rgba(18, 109, 204, 0.25);
+}
+
+.predict-btn:disabled {
+    opacity: 0.6;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+
+/* =========================================================
+   REPORT PANEL
+========================================================= */
+
+.report-panel {
+    min-height: 450px;
+
+    background: white;
+
+    border-radius: 18px;
+
+    padding: 25px;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+
+/* Welcome */
+
+.welcome-card {
+    min-height: 390px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 30px;
+}
+
+.welcome-icon {
+    width: 75px;
+
+    height: 75px;
+
+    border-radius: 50%;
+
+    background: #eaf5ff;
+
+    color: #1687e8;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 20px;
+}
+
+.welcome-icon i {
+    font-size: 32px;
+}
+
+.welcome-card h2 {
+    font-size: 21px;
+
+    color: #172033;
+
+    margin-bottom: 10px;
+}
+
+.welcome-card > p {
+    max-width: 500px;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    color: #718096;
+
+    margin-bottom: 25px;
+}
+
+.report-info {
+    width: 100%;
+
+    max-width: 430px;
+
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 15px;
+}
+
+.report-info div {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    color: #718096;
+
+    font-size: 11px;
+}
+
+.report-info i {
+    color: #1687e8;
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.loading {
+    min-height: 400px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    gap: 10px;
+}
+
+.loading i {
+    font-size: 35px;
+
+    color: #1687e8;
+}
+
+.loading h2 {
+    font-size: 18px;
+}
+
+.loading p {
+    font-size: 13px;
+
+    color: #718096;
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.error {
+    min-height: 400px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    gap: 10px;
+}
+
+.error i {
+    font-size: 40px;
+
+    color: #e53e3e;
+}
+
+.error h2 {
+    font-size: 19px;
+}
+
+.error p {
+    color: #718096;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   REPORT RESULT
+========================================================= */
+
+.report-container {
+    width: 100%;
+}
+
+.report-title {
+    text-align: center;
+
+    margin-bottom: 20px;
+}
+
+.report-title > i {
+    font-size: 30px;
+
+    color: #1687e8;
+
+    margin-bottom: 8px;
+}
+
+.report-title h2 {
+    font-size: 21px;
+}
+
+.report-title p {
+    font-size: 11px;
+
+    color: #718096;
+}
+
+
+/* Disease card */
+
+.main-disease-card {
+    background: linear-gradient(
+        135deg,
+        #eaf6ff,
+        #f7fbff
+    );
+
+    border: 1px solid #d7ebfa;
+
+    border-radius: 15px;
+
+    padding: 25px;
+
+    text-align: center;
+
+    margin-bottom: 20px;
+}
+
+.disease-icon {
+    width: 55px;
+
+    height: 55px;
+
+    border-radius: 50%;
+
+    margin: auto auto 10px;
+
+    background: white;
+
+    color: #1687e8;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+.main-disease-card h1 {
+    font-size: 24px;
+
+    color: #126dcc;
+
+    margin-bottom: 8px;
+}
+
+.confidence-label {
+    font-size: 12px;
+
+    color: #718096;
+}
+
+.main-disease-card h2 {
+    font-size: 28px;
+
+    color: #1687e8;
+
+    margin: 5px 0 10px;
+}
+
+.progress {
+    width: 100%;
+
+    height: 8px;
+
+    background: #dceaf5;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+
+    background: #1687e8;
+
+    border-radius: 20px;
+}
+
+.risk-badge {
+    display: inline-block;
+
+    margin-top: 12px;
+
+    padding: 6px 12px;
+
+    border-radius: 20px;
+
+    background: #e7f8ed;
+
+    color: #208744;
+
+    font-size: 11px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   REPORT GRID
+========================================================= */
+
+.report-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 12px;
+}
+
+.report-card {
+    padding: 16px;
+
+    border: 1px solid #e1e8f0;
+
+    border-radius: 12px;
+
+    background: white;
+}
+
+.report-card > i {
+    color: #1687e8;
+
+    font-size: 18px;
+
+    margin-bottom: 8px;
+}
+
+.report-card h3 {
+    font-size: 14px;
+
+    margin-bottom: 7px;
+}
+
+.report-card p,
+.report-card li {
+    font-size: 11px;
+
+    line-height: 1.6;
+
+    color: #687588;
+}
+
+.report-card ul {
+    padding-left: 17px;
+}
+
+
+/* =========================================================
+   REPORT BUTTONS
+========================================================= */
+
+.report-buttons {
+    display: flex;
+
+    gap: 12px;
+
+    margin-top: 20px;
+}
+
+.download-btn,
+.again-btn {
+    flex: 1;
+
+    height: 45px;
+
+    border-radius: 9px;
+
+    font-family: inherit;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.download-btn {
+    border: none;
+
+    background: #1687e8;
+
+    color: white;
+}
+
+.again-btn {
+    border: 1px solid #1687e8;
+
+    background: white;
+
+    color: #1687e8;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.page-footer {
+    width: 100%;
+
+    margin-top: 30px;
+
+    padding: 18px 5px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    border-top: 1px solid #dfe6ee;
+}
+
+.footer-left p {
+    font-size: 11px;
+
+    color: #718096;
+}
+
+.footer-right {
+    display: flex;
+
+    gap: 15px;
+}
+
+.footer-right a {
+    color: #718096;
+
+    font-size: 16px;
+
+    text-decoration: none;
+}
+
+.footer-right a:hover {
+    color: #1687e8;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .main-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-right {
+        display: none;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .sidebar {
+        width: 190px;
+    }
+
+    .page {
+        margin-left: 190px;
+
+        width: calc(100% - 190px);
+
+        padding: 15px;
+    }
+
+    .topbar {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+    .symptom-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .report-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .page-footer {
+        flex-direction: column;
+
+        gap: 10px;
+
+        text-align: center;
+    }
+
+}
