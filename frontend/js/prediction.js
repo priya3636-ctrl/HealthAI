@@ -1,4 +1,4 @@
-// ============================================================
+﻿// ============================================================
 // HealthAI - Disease Prediction
 // prediction.js
 // ============================================================
@@ -10,10 +10,9 @@ console.log("HealthAI prediction.js loaded successfully.");
 // CONFIGURATION
 // ============================================================
 const ML_API_URL = "http://127.0.0.1:8000";
-const BACKEND_API_URL = "http://localhost:5000";
-const SYMPTOMS_URL = "http://127.0.0.1:8000/data/symptoms.json";
-
-const DISEASE_INFO_URL = "http://127.0.0.1:8000/data/diseaseInfo.json";
+const BACKEND_API_URL = "https://healthai-backend-ashy.vercel.app";
+const SYMPTOMS_URL = "/data/symptoms.json";
+const DISEASE_INFO_URL = "/data/diseaseInfo.json";
 
 
 // ============================================================
@@ -314,7 +313,7 @@ async function loadSymptoms() {
                 </h3>
 
                 <p>
-                    ${escapeHtml(
+                    ${escapeHTML(
                         error.message
                     )}
                 </p>
@@ -565,7 +564,20 @@ function setupPredictionButton() {
     );
 
 }
+// ============================================================
+// ESCAPE HTML
+// ============================================================
 
+function escapeHTML(value) {
+
+    return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
 
 // ============================================================
 // PREDICT DISEASE
@@ -843,7 +855,7 @@ async function predictDisease() {
                     </h2>
 
                     <p>
-                        ${escapeHtml(
+                        ${escapeHTML(
                             error.message ||
                             "Unable to connect to HealthAI backend."
                         )}
@@ -1203,7 +1215,7 @@ function showPrediction(
 
 
                 <h1>
-                    ${escapeHtml(disease)}
+                    ${escapeHTML(disease)}
                 </h1>
 
 
@@ -1231,7 +1243,7 @@ function showPrediction(
 
                 <span class="risk-badge">
 
-                    🟢 ${riskText}
+                    ðŸŸ¢ ${riskText}
 
                 </span>
 
@@ -1251,7 +1263,7 @@ function showPrediction(
                     </h3>
 
                     <p>
-                        ${escapeHtml(
+                        ${escapeHTML(
                             info.description ||
                             defaultDiseaseInfo.description
                         )}
@@ -1269,7 +1281,7 @@ function showPrediction(
                     </h3>
 
                     <p>
-                        ${escapeHtml(
+                        ${escapeHTML(
                             info.doctor ||
                             defaultDiseaseInfo.doctor
                         )}
@@ -1378,6 +1390,7 @@ function showPrediction(
 
     // Attach report buttons
 
+    // Attach report buttons
     setupReportButtons();
 
 }
@@ -1418,7 +1431,7 @@ function createList(
                         return `
 
                             <li>
-                                ${escapeHtml(
+                                ${escapeHTML(
                                     String(item)
                                 )}
                             </li>
@@ -1433,6 +1446,583 @@ function createList(
         </ul>
 
     `;
+
+}
+// ============================================================
+// REPORT BUTTONS
+// ============================================================
+
+function setupReportButtons() {
+
+    const downloadBtn =
+        document.getElementById("downloadBtn");
+
+    const predictAgainBtn =
+        document.getElementById("predictAgainBtn");
+
+
+    // --------------------------------------------------------
+    // DOWNLOAD REPORT
+    // --------------------------------------------------------
+
+    if (downloadBtn) {
+
+        downloadBtn.addEventListener(
+            "click",
+            function () {
+
+                if (!lastPrediction) {
+
+                    alert(
+                        "No prediction report is available."
+                    );
+
+                    return;
+
+                }
+
+
+                const disease =
+                    lastPrediction.disease ||
+                    "Unknown Disease";
+
+                const confidence =
+                    Number(
+                        lastPrediction.confidence || 0
+                    );
+
+                const symptoms =
+                    Array.isArray(
+                        lastPrediction.symptoms
+                    )
+                        ? lastPrediction.symptoms
+                        : [];
+
+
+                const info =
+                    lastPrediction.info ||
+                    defaultDiseaseInfo;
+
+
+                const reportWindow =
+                    window.open(
+                        "",
+                        "_blank",
+                        "width=900,height=900"
+                    );
+
+
+                if (!reportWindow) {
+
+                    alert(
+                        "Please allow pop-ups in your browser to download the report."
+                    );
+
+                    return;
+
+                }
+
+
+                const listHTML =
+                    function (items) {
+
+                        if (
+                            !Array.isArray(items) ||
+                            items.length === 0
+                        ) {
+
+                            return "<p>Information not available.</p>";
+
+                        }
+
+
+                        return `
+                            <ul>
+                                ${items.map(
+                                    function (item) {
+
+                                        return `
+                                            <li>
+                                                ${escapeHTML(
+                                                    String(item)
+                                                )}
+                                            </li>
+                                        `;
+
+                                    }
+                                ).join("")}
+                            </ul>
+                        `;
+
+                    };
+
+
+                reportWindow.document.write(`
+
+                    <!DOCTYPE html>
+
+                    <html>
+
+                    <head>
+
+                        <meta charset="UTF-8">
+
+                        <title>
+                            HealthAI Prediction Report
+                        </title>
+
+                        <style>
+
+                            body {
+
+                                font-family:
+                                    Arial,
+                                    sans-serif;
+
+                                margin: 40px;
+
+                                color: #222;
+
+                                line-height: 1.6;
+
+                            }
+
+
+                            .header {
+
+                                text-align: center;
+
+                                border-bottom:
+                                    2px solid #222;
+
+                                padding-bottom: 20px;
+
+                                margin-bottom: 25px;
+
+                            }
+
+
+                            .header h1 {
+
+                                margin: 0;
+
+                                font-size: 30px;
+
+                            }
+
+
+                            .header p {
+
+                                margin: 5px 0;
+
+                                color: #555;
+
+                            }
+
+
+                            .result {
+
+                                text-align: center;
+
+                                border: 2px solid #333;
+
+                                padding: 20px;
+
+                                margin-bottom: 25px;
+
+                            }
+
+
+                            .result h2 {
+
+                                font-size: 26px;
+
+                                margin: 10px 0;
+
+                            }
+
+
+                            .confidence {
+
+                                font-size: 22px;
+
+                                font-weight: bold;
+
+                            }
+
+
+                            .section {
+
+                                border: 1px solid #ccc;
+
+                                padding: 15px;
+
+                                margin-bottom: 15px;
+
+                                page-break-inside:
+                                    avoid;
+
+                            }
+
+
+                            .section h3 {
+
+                                margin-top: 0;
+
+                            }
+
+
+                            .warning {
+
+                                border: 2px solid #555;
+
+                                padding: 15px;
+
+                                margin-top: 25px;
+
+                            }
+
+
+                            .footer {
+
+                                text-align: center;
+
+                                margin-top: 30px;
+
+                                padding-top: 15px;
+
+                                border-top: 1px solid #ccc;
+
+                                color: #666;
+
+                                font-size: 12px;
+
+                            }
+
+
+                            @media print {
+
+                                body {
+
+                                    margin: 20px;
+
+                                }
+
+                            }
+
+                        </style>
+
+                    </head>
+
+
+                    <body>
+
+
+                        <div class="header">
+
+                            <h1>
+                                HealthAI
+                            </h1>
+
+                            <p>
+                                AI Healthcare Assistant
+                            </p>
+
+                            <p>
+                                AI Disease Prediction Report
+                            </p>
+
+                        </div>
+
+
+                        <div class="result">
+
+                            <h2>
+                                ${escapeHTML(disease)}
+                            </h2>
+
+                            <p>
+                                Prediction Confidence
+                            </p>
+
+                            <div class="confidence">
+
+                                ${confidence.toFixed(2)}%
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="section">
+
+                            <h3>
+                                Reported Symptoms
+                            </h3>
+
+                            <p>
+                                ${escapeHTML(
+                                    symptoms
+                                        .map(
+                                            function (s) {
+                                                return formatSymptomName(s);
+                                            }
+                                        )
+                                        .join(", ")
+                                )}
+                            </p>
+
+                        </div>
+
+
+                        <div class="section">
+
+                            <h3>
+                                Description
+                            </h3>
+
+                            <p>
+                                ${escapeHTML(
+                                    info.description ||
+                                    defaultDiseaseInfo.description
+                                )}
+                            </p>
+
+                        </div>
+
+
+                        <div class="section">
+
+                            <h3>
+                                Recommended Specialist
+                            </h3>
+
+                            <p>
+                                ${escapeHTML(
+                                    info.doctor ||
+                                    defaultDiseaseInfo.doctor
+                                )}
+                            </p>
+
+                        </div>
+
+
+                        <div class="section">
+
+                            <h3>
+                                Treatment
+                            </h3>
+
+                            ${listHTML(
+                                info.treatment
+                            )}
+
+                        </div>
+
+
+                        <div class="section">
+
+                            <h3>
+                                Precautions
+                            </h3>
+
+                            ${listHTML(
+                                info.avoid
+                            )}
+
+                        </div>
+
+
+                        <div class="section">
+
+                            <h3>
+                                Recommended Foods
+                            </h3>
+
+                            ${listHTML(
+                                info.foods
+                            )}
+
+                        </div>
+
+
+                        <div class="section">
+
+                            <h3>
+                                Common Symptoms
+                            </h3>
+
+                            ${listHTML(
+                                info.symptoms
+                            )}
+
+                        </div>
+
+
+                        <div class="warning">
+
+                            <strong>
+                                Medical Disclaimer
+                            </strong>
+
+                            <p>
+
+                                This report is generated by
+                                an AI-based symptom-pattern
+                                system for informational
+                                purposes only.
+
+                                It is not a medical diagnosis
+                                and should not replace advice
+                                from a qualified healthcare
+                                professional.
+
+                            </p>
+
+                        </div>
+
+
+                        <div class="footer">
+
+                            HealthAI |
+                            AI Healthcare Assistant
+
+                        </div>
+
+
+                    </body>
+
+                    </html>
+
+                `);
+
+
+                reportWindow.document.close();
+
+
+                setTimeout(
+                    function () {
+
+                        reportWindow.focus();
+
+                        reportWindow.print();
+
+                    },
+                    500
+                );
+
+            }
+        );
+
+    }
+
+
+    // --------------------------------------------------------
+    // PREDICT AGAIN
+    // --------------------------------------------------------
+
+    if (predictAgainBtn) {
+
+        predictAgainBtn.addEventListener(
+            "click",
+            function () {
+
+                lastPrediction = null;
+
+                const reportPanel =
+                    document.querySelector(
+                        ".report-panel"
+                    );
+
+
+                if (reportPanel) {
+
+                    reportPanel.innerHTML = `
+
+                        <div class="prediction-placeholder">
+
+                            <i class="fa-solid fa-microchip"></i>
+
+                            <h2>
+                                Ready for a new prediction
+                            </h2>
+
+                            <p>
+                                Select your symptoms and click
+                                Predict Disease.
+                            </p>
+
+                        </div>
+
+                    `;
+
+                }
+
+
+                const checkboxes =
+                    document.querySelectorAll(
+                        "#symptomContainer input[type='checkbox']"
+                    );
+
+
+                checkboxes.forEach(
+                    function (checkbox) {
+
+                        checkbox.checked = false;
+
+                    }
+                );
+
+
+                const searchInput =
+                    document.getElementById(
+                        "searchSymptoms"
+                    );
+
+
+                if (searchInput) {
+
+                    searchInput.value = "";
+
+                    renderSymptoms(
+                        allSymptoms
+                    );
+
+                }
+
+
+                const predictBtn =
+                    document.getElementById(
+                        "predictBtn"
+                    );
+
+
+                if (predictBtn) {
+
+                    predictBtn.disabled = false;
+
+                    predictBtn.innerHTML = `
+
+                        <i class="fa-solid fa-microchip"></i>
+
+                        Predict Disease
+
+                    `;
+
+                }
+
+
+                window.scrollTo(
+                    {
+                        top: 0,
+                        behavior: "smooth"
+                    }
+                );
+
+            }
+        );
+
+    }
 
 }
 
@@ -1549,3 +2139,4 @@ async function savePredictionHistory(
     }
 
 }
+

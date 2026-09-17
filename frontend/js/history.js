@@ -8,7 +8,7 @@
 // CONFIGURATION
 // ==========================================
 
-const BACKEND_API_URL = "http://localhost:5000";
+const BACKEND_API_URL = "https://healthai-backend-ashy.vercel.app";
 
 
 // ==========================================

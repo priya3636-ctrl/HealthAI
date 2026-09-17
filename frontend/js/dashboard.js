@@ -42,7 +42,7 @@ if (usernameElement) {
 // ============================================================
 
 const DASHBOARD_API_URL =
-    "http://localhost:5000/api/dashboard";
+    "https://healthai-backend-ashy.vercel.app/api/dashboard";
 
 
 // ============================================================

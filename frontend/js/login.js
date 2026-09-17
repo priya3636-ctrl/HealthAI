@@ -7,7 +7,7 @@ document.getElementById("loginForm").addEventListener("submit", async function (
 
     try {
 
-        const response = await fetch("http://localhost:5000/api/auth/login", {
+        const response = await fetch("https://healthai-backend-ashy.vercel.app/api/auth/login", {
 
             method: "POST",
 

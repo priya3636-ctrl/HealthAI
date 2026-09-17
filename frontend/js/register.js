@@ -19,7 +19,7 @@ document.getElementById("registerForm").addEventListener("submit", async functio
 
     try {
 
-        const response = await fetch("http://localhost:5000/api/auth/register", {
+        const response = await fetch("https://healthai-backend-ashy.vercel.app/api/auth/register", {
 
             method: "POST",
 
@@ -61,4 +61,4 @@ document.getElementById("registerForm").addEventListener("submit", async functio
 
     }
 
-});
+})

@@ -1,0 +1,35 @@
+.vercel/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+
+# Local databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Large ML model files
+*.pkl
+*.joblib
+*.h5
+*.pt
+*.pth
+
+# Uploads and generated files
+uploads/
+*.pdf
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/

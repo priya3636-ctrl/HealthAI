@@ -85,7 +85,7 @@ async function sendMessage(){
 
     try{
 
-        const response = await fetch("http://localhost:5000/api/chatbot/chat",{
+        const response = await fetch("https://healthai-backend-ashy.vercel.app/api/chatbot/chat",{
 
             method:"POST",
 

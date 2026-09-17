@@ -41,7 +41,7 @@ async function loadReminders() {
 
         const response = await fetch(
 
-            `http://localhost:5000/api/reminder/${user.id}`
+            `https://healthai-backend-ashy.vercel.app/api/reminder/${user.id}`
 
         );
 
@@ -134,7 +134,7 @@ saveReminder.addEventListener("click", async () => {
 
         const response = await fetch(
 
-            "http://localhost:5000/api/reminder",
+            "https://healthai-backend-ashy.vercel.app/api/reminder",
 
             {
 
@@ -201,7 +201,7 @@ async function deleteReminder(id) {
 
         await fetch(
 
-            `http://localhost:5000/api/reminder/${id}`,
+            `https://healthai-backend-ashy.vercel.app/api/reminder/${id}`,
 
             {
 

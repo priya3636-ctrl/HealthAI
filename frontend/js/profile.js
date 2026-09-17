@@ -61,7 +61,7 @@ async function loadProfileStatistics() {
     try {
 
         const response = await fetch(
-            "http://localhost:5000/api/history",
+            "https://healthai-backend-ashy.vercel.app/api/history",
             {
                 method: "GET",
 
